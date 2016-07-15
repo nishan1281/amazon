@@ -28,7 +28,7 @@ while $i < $num  do
     bookName = a.title
     puts bookName
     browser2 = Watir::Browser.new
-    #http://localhost/final_project_amazon/inserturl.php?url=123
+    #http://localhost/final_project_amazon/inserturl.php?url=12345
     browser2.goto "http://localhost/final_project_amazon/inserturl.php?url"<<"="<<a.href<<"&bookName="<<bookName<<"&category="<<category
     browser2.close
 
