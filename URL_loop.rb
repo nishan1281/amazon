@@ -16,9 +16,9 @@ browser = Watir::Browser.new :firefox, :http_client => client
 
 category = "Arts_and_Photography"
 
-targetURL = "https://www.amazon.com/s/ref=lp_1_il_ti_stripbooks/000-9620769-8367691?rh=n%3A283155%2Cn%3A!1000%2Cn%3A1&ie=UTF8&qid=1468528215&lo=stripbooks"
+targetURL = "http://www.amazon.in/s/ref=sr_pg_4?rh=n%3A976389031%2Cn%3A%21976390031%2Cn%3A1318158031&page=4&ie=UTF8&qid=1468782595&lo=stripbooks"
 $i = 0
-$num = 100
+$num = 1000
 while $i < $num  do
   browser.goto targetURL
 
@@ -29,7 +29,7 @@ while $i < $num  do
     puts bookName
     browser2 = Watir::Browser.new
     #http://localhost/final_project_amazon/inserturl.php?url=12345
-    browser2.goto "http://localhost/final_project_amazon/inserturl.php?url"<<"="<<a.href<<"&bookName="<<bookName<<"&category="<<category
+    browser2.goto "http://localhost/workspace/amazon/amazon/inserturl.php?url"<<"="<<a.href<<"&bookName="<<bookName<<"&category="<<category
     browser2.close
 
   end
