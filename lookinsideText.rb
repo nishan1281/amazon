@@ -19,9 +19,8 @@ browser = Watir::Browser.new :firefox, :http_client => client
 
 targetURL = "https://www.amazon.in/Inferno-Ebook-Sampler-Dan-Brown-ebook/dp/B00BUB2X6W?ie=UTF8&qid=1468693446&ref_=lp_1318158031_1_4&s=books&sr=1-4"
 
-#if session expires it will not return anything
 
 browser.goto targetURL
 browser.image(:id => "sitbLogoImg").click
-d = browser.div :class => 'sitb-was-a-p'
-puts d.text
+itext = browser.div(:id => "sitbReaderPageScroll").text
+puts itext
