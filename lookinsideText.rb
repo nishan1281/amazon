@@ -21,6 +21,8 @@ targetURL = "https://www.amazon.in/Inferno-Ebook-Sampler-Dan-Brown-ebook/dp/B00B
 
 
 browser.goto targetURL
-browser.image(:id => "sitbLogoImg").click
-itext = browser.div(:id => "sitbReaderPageScroll").text
+browser.image(:class=>/a-dynamic-image frontImage/).click
+#browser.image(:id => "ebooksSitbLogo").click
+# itext = browser.div(:class => 'sitb-was-a-p').text
+itext = browser.div(:id => 'sitbReaderPageContainer').text
 puts itext
