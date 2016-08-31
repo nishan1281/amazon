@@ -17,12 +17,12 @@ browser = Watir::Browser.new :firefox, :http_client => client
 
 
 
-targetURL = "https://www.amazon.in/Inferno-Ebook-Sampler-Dan-Brown-ebook/dp/B00BUB2X6W?ie=UTF8&qid=1468693446&ref_=lp_1318158031_1_4&s=books&sr=1-4"
+targetURL = "https://www.amazon.in/Secret-Druids-Christopher-C-Doyle-ebook/dp/B01BMD4JF0?ie=UTF8&qid=1472664339&ref_=lp_1318158031_1_2&s=books&sr=1"
 
 
 browser.goto targetURL
-browser.image(:class=>/a-dynamic-image frontImage/).click
+browser.image(:id => "ebooksSitbLogoImg").click
 #browser.image(:id => "ebooksSitbLogo").click
 # itext = browser.div(:class => 'sitb-was-a-p').text
-itext = browser.div(:id => 'sitbReaderPageContainer').text
+itext = browser.div(:id => 'sitbReaderPageScroll').text
 puts itext
