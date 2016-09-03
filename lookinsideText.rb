@@ -24,5 +24,6 @@ browser.goto targetURL
 browser.image(:id => "ebooksSitbLogoImg").click
 #browser.image(:id => "ebooksSitbLogo").click
 # itext = browser.div(:class => 'sitb-was-a-p').text
-itext = browser.div(:id => 'sitbReaderPageScroll').text
+itext = browser.iframe(:id => 'sitbReaderFrame').when_present.text
+#itext = browser.div(:id => 'sitbReaderPageScroll').when_present.text
 puts itext
