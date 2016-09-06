@@ -29,6 +29,8 @@ $product->SetImgUrl($_GET['img_url']);
 $product->SetBookDetails($_GET['details']);
 //echo $product->GetSource();
 
+$product->SetLookInsideText(base64_decode($_GET['look_inside_text']));
+
 InsertProduct($product);
 
 

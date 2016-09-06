@@ -3,6 +3,7 @@ require 'watir'
 require 'watir-webdriver'
 require 'uri'
 require "cgi"
+require "base64"
 
 ########## Gets the Target URLs ###########
 #LinkBrowser = Watir::Browser.new
@@ -27,13 +28,13 @@ begin
     browser = Watir::Browser.new
     browser.goto row['value']
 
-    title=browser.span :id => 'productTitle'
+    title=browser.span :id => 'ebooksProductTitle'
    # print title.text
 
     author=browser.span :class => 'author notFaded'
    # print author.text
 
-    rating=browser.div :id=> 'averageCustomerReviews_feature_div'
+    rating=browser.div :id=> 'averageCustomerReviews'
    # print rating.text
 
     prices=browser.div :id => 'tmmSwatches'
@@ -41,22 +42,29 @@ begin
 
     #cgi = CGI.new
 
-    img_url=browser.img :id =>'imgBlkFront'
+    img_url=browser.img :id =>'ebooksImgBlkFront'
    # print img_url.src
     uri= URI.escape(img_url.src)
 
     content=browser.div :id =>'bookDescription_feature_div'
    # print content.text
+    description = browser.iframe(:id => 'bookDesc_iframe').when_present(60).text
+    #description=browser.div :id =>'productDescription'
+   #print description
 
-    description=browser.div :id =>'productDescription'
-   # print description.text
+    details=browser.div :id =>'detail_bullets_id'
+    #print details.text
+if
+    browser.image(:id => "ebooksSitbLogoImg").exists?
+    browser.image(:id => "ebooksSitbLogoImg").click
+    look_inside_text = browser.iframe(:id => 'sitbReaderFrame').when_present(90).text
 
-    details=browser.div :class =>'content'
-   # print details.text
-
+else
+  look_inside_text = 'NA'
+end
     browser2 = Watir::Browser.new
     #browser2.goto "http://localhost:81/amazon/insertdata.php?title=test"
-    browser2.goto "http://localhost/final_project_amazon/insertdata.php"<<"?title="<<title.text<< "&author="<<author.text<<"&rating="<<rating.text<<"&img_url="<<uri<<"&prices="<<prices.text<<"&content="<<content.text<<"&description="<<description.text<<"&details="<<details.text
+    browser2.goto "http://localhost/final_project_amazon/insertdata.php"<<"?title="<<title.text<< "&author="<<author.text<<"&rating="<<rating.text<<"&img_url="<<uri<<"&prices="<<prices.text<<"&content="<<content.text<<"&description="<<description.text<<"&details="<<details.text<<"&look_inside_text="<<Base64.encode64(look_inside_text.text)
 
     browser2.close
     browser.close

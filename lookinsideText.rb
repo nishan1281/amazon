@@ -21,9 +21,15 @@ targetURL = "https://www.amazon.in/Secret-Druids-Christopher-C-Doyle-ebook/dp/B0
 
 
 browser.goto targetURL
-browser.image(:id => "ebooksSitbLogoImg").click
-#browser.image(:id => "ebooksSitbLogo").click
-# itext = browser.div(:class => 'sitb-was-a-p').text
-itext = browser.iframe(:id => 'sitbReaderFrame').when_present.text
-#itext = browser.div(:id => 'sitbReaderPageScroll').when_present.text
-puts itext
+if
+  browser.image(:id => "ebooksSitbLogoImg").exists?
+  browser.image(:id => "ebooksSitbLogoImg").click
+  #browser.image(:id => "ebooksSitbLogo").click
+  # itext = browser.div(:class => 'sitb-was-a-p').text
+  itext = browser.iframe(:id => 'sitbReaderFrame').when_present(90).text
+  #itext = browser.div(:id => 'sitbReaderPageScroll').when_present.text
+  puts itext
+else
+  puts 'no data'
+end
+

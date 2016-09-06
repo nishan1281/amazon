@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Product{
 
@@ -14,6 +14,7 @@ private $book_desc;
 private $book_details;
 private $img_url;
 private $is_ok;
+private $look_inside_text;
 
 	public function SetProductID($productid){
 		$this->productid=$productid;
@@ -111,6 +112,12 @@ private $is_ok;
 	public function GetIsOk(){
 		return $this->is_ok;
 }
+    public function SetLookInsideText($look_inside_text){
+		$this->look_inside_text=$look_inside_text;
+	}
+	public function GetLookInsideText(){
+		return $this->look_inside_text;
+	}
 
 
 }
