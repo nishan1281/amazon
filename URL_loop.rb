@@ -16,9 +16,9 @@ browser = Watir::Browser.new :firefox, :http_client => client
 
 category = "Arts_and_Photography"
 
-targetURL = "http://www.amazon.in/s/ref=sr_pg_4?rh=n%3A976389031%2Cn%3A%21976390031%2Cn%3A1318158031&page=4&ie=UTF8&qid=1468782595&lo=stripbooks"
+targetURL = "http://www.amazon.in/s/ref=lp_1318158031_il_ti_stripbooks?rh=n%3A976389031%2Cn%3A%21976390031%2Cn%3A1318158031&ie=UTF8&qid=1472664334&lo=stripbooks"
 $i = 0
-$num = 1000
+$num = 3000
 while $i < $num  do
   browser.goto targetURL
 
